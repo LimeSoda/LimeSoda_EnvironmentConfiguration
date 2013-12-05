@@ -36,8 +36,7 @@ EOT
         $this->detectMagento($output);
         if ($this->initMagento()) {
            if (\Mage::helper('core')->isModuleEnabled(self::EXTENSION_NAME) === false) {
-               $output->writeln("Extension '" . self::EXTENSION_NAME ."' is not installed.");
-               return;
+               throw new \Exception("Extension '" . self::EXTENSION_NAME ."' is not installed.");
            } 
             
            $key = strip_tags($input->getArgument('key'));
