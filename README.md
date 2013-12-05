@@ -1,15 +1,16 @@
 LimeSoda Environment Configuration
 =====================
-Enables developers to modify Magento installations based on the given environment. 
+Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun. 
 
 Facts
 -----
 - version: 0.0.1
 - extension key: LimeSoda_EnvironmentConfiguration
+- [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
 Description
 -----------
-Enables developers to modify Magento installations based on the given environment.
+Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun.
 
 Requirements
 ------------
@@ -19,7 +20,7 @@ Requirements
 
 Compatibility
 -------------
-- Magento >= EE 1.13.0.2 (may also work on older version)
+- Magento >= EE 1.13.0.2 (should also work on older and CE versions)
 
 Installation Instructions
 -------------------------
@@ -28,6 +29,14 @@ Installation Instructions
 Uninstallation
 --------------
 1. Just like any other modman installed extension.
+
+Support
+-------
+If you have any issues with this extension, open an issue on [GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration/issues).
+
+Contribution
+------------
+Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
 Developer
 ---------
