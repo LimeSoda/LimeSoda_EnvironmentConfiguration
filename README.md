@@ -26,6 +26,150 @@ Installation Instructions
 -------------------------
 1. Install the extension via modman.
 
+Usage
+-----
+
+Call n98-magerun like this:
+
+    n98-magerun.phar ls:env:configure [environment]
+
+### Adding environments
+
+Create a new extension (or use an existing one) and add a `global > environments` node to your `config.xml`:
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <environments>
+                <default />
+            </environments>
+        </global>
+    </config>
+
+Congratulations, you created your "default" environment!
+
+Calling
+
+    n98-magerun.phar ls:env:configure default
+
+will execute the actions you specified for this environment.
+
+### Adding commands
+
+Next we create a command. You create a `commands` node beneath your environment node. To add a command, you choose a unique node name and add the n98-magerun command as the value:
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <environments>
+                <default>
+                    <commands>
+                        <cfg_wubu>config:set "web/unsecure/base_url" "http://www.domain.tld/"</cfg_wubu>
+                    </commands>
+                </default>
+            </environments>
+        </global>
+    </config>
+
+### Using variables
+
+You can replace hard-coded strings (e.g. URLs) with variables. Add variables for your environment as children of a `variables` node. Then you can insert the values into commands using the notation `${variable_name}`.
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <environments>
+                <default>
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                    <commands>
+                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+                    </commands>
+                </default>
+            </environments>
+        </global>
+    </config>
+
+### Nesting environments
+
+Using variables is nice but the most you will profit if you nest environments. This means you can create a base definition for commands and variables and expand them in other environments. You do this by specifying the parent in your environments base node: `<dev parent="default">`.
+
+A typical setup could be:
+
+* default
+    * dev
+      * developer 1
+      * developer 2
+      * developer 3
+   * test
+   * qa
+   * staging
+   * live
+
+If you want to re-build this setup for the environment configuration, your XML will look like this:
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <environments>
+                <default />
+                <dev parent="default" />
+                <dev01 parent="dev" />
+                <dev02 parent="dev" />
+                <dev03 parent="dev" />
+                <test parent="default" />
+                <qa parent="default" />
+                <staging parent="default" />
+                <live parent="default" />
+            </environments>
+        </global>
+    </config>
+    
+If you define a command or variable in a parent environment, the child environment will inherit them.
+
+By specifiying commands and variables on different levels, you can save yourself some typing and maintenance work. In the next example we disable and flush the cache for all environments while setting a different URL for every environment.
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <environments>
+                <default>
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                    <commands>
+                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+                    </commands>
+                </default>
+                <dev parent="default">
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://dev.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                    <commands>
+                        <cd>cache:disable</cd>
+                        <cf>cache:flush</cf>
+                    </commands>
+                </dev>
+                <dev01 parent="dev">
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://dev01.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                </dev01>
+                <dev02 parent="dev">
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://dev02.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                </dev02>
+                <dev03 parent="dev">
+                    <variables>
+                        <unsecure_base_url><![CDATA[http://dev03.domain.tld/]]></unsecure_base_url>
+                    </variables>
+                </dev03>
+            </environments>
+        </global>
+    </config>
+
 Uninstallation
 --------------
 1. Just like any other modman installed extension.
