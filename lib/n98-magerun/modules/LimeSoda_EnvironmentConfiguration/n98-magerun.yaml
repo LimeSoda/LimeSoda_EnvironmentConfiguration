@@ -3,4 +3,5 @@ autoloaders:
 
 commands:
   customCommands:
+    - LimeSoda\Environment\Configure
     - LimeSoda\Environment\Configure\Ess\M2ePro\SetLicenseKey
