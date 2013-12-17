@@ -30,15 +30,16 @@ class Configure extends AbstractMagentoCommand
         if ($this->initMagento()) {
           
           $environment = $input->getArgument('environment');
+          $helper = \Mage::helper('limesoda_environmentconfiguration');
           
           // Deactivating auto-exiting after command execution
           $this->getApplication()->setAutoExit(false);
           
-          $variables = $this->getVariables($environment);
+          $variables = $helper->getVariables($environment);
           $search = array_keys($variables);
           $replace = array_values($variables);
           
-          foreach ($this->getCommands($environment) as $command) {
+          foreach ($helper->getCommands($environment) as $command) {
               $value = str_replace($search, $replace, strval($command));
               $input = new StringInput($value);
               $this->getApplication()->run($input, $output);
@@ -49,82 +50,4 @@ class Configure extends AbstractMagentoCommand
         }
     }
 
-    /**
-     * Returns the commands from Magento configuration XML.
-     * 
-     * @param string $environment
-     * @return array
-     */
-    protected function getCommands($environment)
-    {
-        $config = $this->getEnvironmentConfig($environment);
-        
-        // get parent commands (if they exist)
-        if ($parent = $config->getAttribute('parent')) {
-            $result = $this->getCommands($parent);
-        } else {
-            $result = array();
-        }
-        
-        $commands = $config->descend('commands');
-        
-        if ($commands === false) {
-            return $result;
-        }
-
-        // get commands
-        foreach ($commands->children() as $key => $value) {
-            $result[$key] = $value;
-        }
-        
-        return $result;
-    }
-    
-    /**
-     * Returns the environment configuration
-     * 
-     * @param string $environment
-     * @return Mage_Core_Model_Config_Element
-     */
-    protected function getEnvironmentConfig($environment)
-    {
-        $config = \Mage::getConfig()->getNode('global/build/environments/' . $environment);
-        
-        if ($config === false) {
-            throw new \InvalidArgumentException('Environment ' . $environment . ' isn\'t specified in XML.');
-        }
-        
-        return $config;
-    }
-    
-    /**
-     * Returns the variables from Magento configuration XML.
-     * 
-     * @param string $environment
-     * @return array
-     */
-    protected function getVariables($environment)
-    {
-        $config = $this->getEnvironmentConfig($environment);
-        
-        // get parent variables (if they exist)
-        if ($parent = $config->getAttribute('parent')) {
-            $result = $this->getVariables($parent);
-        } else {
-            $result = array();
-        }
-        
-        $variables = $config->descend('variables');
-        
-        if ($variables === false) {
-            return $result;
-        }
-
-        // get commands
-        foreach ($variables->children() as $variable) {
-            $result['${' . $variable->getName() . '}'] = strval($variable);
-        }
-        
-        return $result;
-    }
 }

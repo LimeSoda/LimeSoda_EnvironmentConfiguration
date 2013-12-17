@@ -1,1 +1,3 @@
+app/code/community/LimeSoda/EnvironmentConfiguration/ app/code/community/LimeSoda/EnvironmentConfiguration/
+app/etc/modules/LimeSoda_EnvironmentConfiguration.xml app/etc/modules/LimeSoda_EnvironmentConfiguration.xml
 lib/n98-magerun/modules/LimeSoda_EnvironmentConfiguration lib/n98-magerun/modules/LimeSoda_EnvironmentConfiguration

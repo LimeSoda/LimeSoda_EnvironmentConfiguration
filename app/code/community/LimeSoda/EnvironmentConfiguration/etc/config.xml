@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<LimeSoda_EnvironmentConfiguration>
+			<version>0.0.1</version>
+		</LimeSoda_EnvironmentConfiguration>
+	</modules>
+	
+	<global>
+		<helpers>
+			<limesoda_environmentconfiguration>
+				<class>LimeSoda_EnvironmentConfiguration_Helper</class>
+			</limesoda_environmentconfiguration>
+		</helpers>
+	</global>
+</config>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<LimeSoda_EnvironmentConfiguration>
+			<active>true</active>
+			<codePool>community</codePool>
+		</LimeSoda_EnvironmentConfiguration>
+	</modules>
+</config>
