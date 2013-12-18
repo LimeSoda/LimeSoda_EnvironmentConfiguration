@@ -49,15 +49,15 @@ Configure the environment of the environment in your XML. Most of the time you w
 
 ### Adding environments
 
-Create a new extension (or use an existing one) and add a `global > environments` node to your `config.xml`:
+Create a new extension (or use an existing one) and add a `global > limesoda >  environments` node to your `config.xml`:
 
     <?xml version="1.0"?>
     <config>
         <global>
             <limesoda>
-	            <environments>
-	                <default />
-	            </environments>
+                <environments>
+                    <default />
+                </environments>
             </limesoda>
         </global>
     </config>
