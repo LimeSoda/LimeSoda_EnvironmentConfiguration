@@ -3,6 +3,11 @@
 class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
+     * @var string 
+     */
+    const XML_PATH_ENVIRONMENTS = 'global/limesoda/environments';
+    
+    /**
      * Cache for getVariables() calls.
      * 
      * @var array
@@ -48,7 +53,7 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      */
     public function getEnvironmentConfig($environment)
     {
-        $config = Mage::getConfig()->getNode('global/build/environments/' . $environment);
+        $config = Mage::getConfig()->getNode(self::XML_PATH_ENVIRONMENTS . '/' . $environment);
         
         if ($config === false) {
             throw new InvalidArgumentException('Environment ' . $environment . ' isn\'t specified in XML.');
