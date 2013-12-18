@@ -77,7 +77,7 @@ Next we create a command. You create a `commands` node beneath your environment 
     <?xml version="1.0"?>
     <config>
         <global>
-        	<limesoda>
+            <limesoda>
 	            <environments>
 	                <default>
 	                    <commands>
@@ -96,7 +96,7 @@ You can replace hard-coded strings (e.g. URLs) with variables. Add variables for
     <?xml version="1.0"?>
     <config>
         <global>
-        	<limesoda>
+            <limesoda>
 	            <environments>
 	                <default>
 	                    <variables>
@@ -132,7 +132,7 @@ If you want to re-build this setup for the environment configuration, your XML w
     <?xml version="1.0"?>
     <config>
         <global>
-        	<limesoda>
+            <limesoda>
 	            <environments>
 	                <default />
 	                <dev parent="default" />
