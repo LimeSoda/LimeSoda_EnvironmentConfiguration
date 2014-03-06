@@ -194,6 +194,63 @@ By specifiying commands and variables on different levels, you can save yourself
         </global>
     </config>
 
+### Configuration skeleton
+
+You can use this `config.xml` skeleton as a starting point for your environment configuration.
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<config>
+		<modules>
+			<YourCompany_YourModule>
+				<version>0.0.1</version>
+			</YourCompany_YourModule>
+		</modules>
+		
+		<global>
+			<limesoda>
+				<environments>
+					<default parent="default">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</default>
+					<dev parent="default">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</dev>
+					<developer1 parent="dev">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</developer1>
+					<testing parent="default">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</testing>
+					<staging parent="default">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</staging>
+					<live parent="default">
+						<variables>
+						</variables>
+						<commands>
+						</commans>
+					</live>
+				</environments>
+			</limesoda>
+		</global>
+	</config>
+
+
 Uninstallation
 --------------
 1. Just like any other modman installed extension.
