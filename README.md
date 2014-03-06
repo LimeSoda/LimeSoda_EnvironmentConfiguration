@@ -213,37 +213,37 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</default>
 					<dev parent="default">
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</dev>
 					<developer1 parent="dev">
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</developer1>
 					<testing parent="default">
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</testing>
 					<staging parent="default">
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</staging>
 					<live parent="default">
 						<variables>
 						</variables>
 						<commands>
-						</commans>
+						</commands>
 					</live>
 				</environments>
 			</limesoda>
