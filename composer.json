@@ -1,0 +1,15 @@
+{
+    "name": "LimeSoda/LimeSoda_EnvironmentConfiguration",
+    "type": "magento-module",
+    "license":"OSL-3.0",
+    "description":"Enables developers to modify Magento installations (configuration, data) based on the given environment using n98-magerun.",
+    "authors":[
+        {
+            "name":"Matthias Zeis",
+            "email":"m.zeis@limesoda.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
