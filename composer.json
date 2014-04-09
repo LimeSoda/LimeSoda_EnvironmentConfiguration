@@ -1,5 +1,5 @@
 {
-    "name": "LimeSoda/LimeSoda_EnvironmentConfiguration",
+    "name": "limesoda/limesoda_environment-configuration",
     "type": "magento-module",
     "license":"OSL-3.0",
     "description":"Enables developers to modify Magento installations (configuration, data) based on the given environment using n98-magerun.",
