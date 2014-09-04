@@ -113,5 +113,35 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
         
         return null;
     }
-    
+
+    /**
+     * Returns the operations from Magento configuration XML.
+     *
+     * @param string $environment
+     * @return array
+     */
+    public function getOperations($environment, $operation, $data)
+    {
+        $config = $this->getEnvironmentConfig($environment);
+        // get parent commands (if they exist)
+        if ($parent = $config->getAttribute('parent')) {
+            $result = $this->getOperations($parent, $operation, $data);
+        } else {
+            $result = array();
+        }
+
+        $operations = $config->descend('operations/'.$operation.'/'.$data);
+
+        if ($operations === false) {
+            return $result;
+        }
+
+        // get commands
+        foreach ($operations->children() as $key => $value) {
+            $result[$key] = $value;
+        }
+
+        return $result;
+    }
+
 }
