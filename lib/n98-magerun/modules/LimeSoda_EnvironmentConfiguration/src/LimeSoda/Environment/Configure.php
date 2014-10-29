@@ -10,6 +10,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Configure extends AbstractMagentoCommand
 {
+	var $_orderedTasks = array('pre_configure', 'commands', 'post_configure');
+	
     protected function configure()
     {
       $this
@@ -38,12 +40,14 @@ class Configure extends AbstractMagentoCommand
           $variables = $helper->getVariables($environment);
           $search = array_keys($variables);
           $replace = array_values($variables);
-          
-          foreach ($helper->getCommands($environment) as $command) {
-              $value = str_replace($search, $replace, strval($command));
-              $input = new StringInput($value);
-              $this->getApplication()->run($input, $output);
-          }
+		  
+		  foreach($this->_orderedTasks as $task) {
+	          foreach ($helper->getCommands($environment, $task) as $command) {
+	              $value = str_replace($search, $replace, strval($command));
+	              $input = new StringInput($value);
+	              $this->getApplication()->run($input, $output);
+	          }
+		  }
           
           // Reactivating auto-exiting after command execution
           $this->getApplication()->setAutoExit(true);

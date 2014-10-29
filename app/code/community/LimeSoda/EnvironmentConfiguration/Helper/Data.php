@@ -20,18 +20,18 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      * @param string $environment
      * @return array
      */
-    public function getCommands($environment)
+    public function getCommands($environment , $node = 'commands')
     {
         $config = $this->getEnvironmentConfig($environment);
         
         // get parent commands (if they exist)
         if ($parent = $config->getAttribute('parent')) {
-            $result = $this->getCommands($parent);
+            $result = $this->getCommands($parent, $node);
         } else {
             $result = array();
         }
         
-        $commands = $config->descend('commands');
+        $commands = $config->descend($node);
         
         if ($commands === false) {
             return $result;
