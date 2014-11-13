@@ -1,0 +1,62 @@
+<?php
+/* @var $this LimeSoda_EnvironmentConfiguration_Block_Adminhtml_Overview */
+$_helper = Mage::helper('limesoda_environmentconfiguration');
+$_environments = $_helper->getEnvironments();
+sort($_environments);
+?>
+<div class="content-header">
+    <table cellspacing="0">
+        <tr>
+            <td style="<?php echo $this->getHeaderWidth() ?>"><?php echo $this->getHeaderHtml() ?></td>
+            <td class="form-buttons"><?php echo $this->getButtonsHtml() ?></td>
+        </tr>
+    </table>
+</div>
+
+<div id="maincontainer">
+    <?php if (count($_environments > 0)): ?>
+        <ul>
+            <?php foreach($_environments as $_environment): ?>
+            <li><a href="<?php echo $this->getUrl('*/*/*', array('env' => $_environment)); ?>"><?php echo $this->escapeHtml($_environment); ?></a></li>
+            <?php endforeach; ?>
+        </ul>
+        <?php if ($this->hasEnvironment()): ?>
+            <div class="content-header">
+                <h3><?php echo $this->__('Commands for environment %s', $this->getEnvironment()); ?></h3>
+            </div>
+            <?php
+            $_commands = $_helper->getParsedCommands($this->getEnvironment());
+            if (count($_commands) > 0): ?>
+            <div class="grid">
+                <div class="hor-scroll">
+                    <table class="data" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr class="headings">
+                                <th class="last no-link"><?php echo $this->__('Commands'); ?></th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <td class="last"><?php echo $this->__('Total commands: %s', count($_commands)); ?></td>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                            <?php $_rowClass = 'even'; ?>
+                            <?php foreach ($_commands as $_key => $_command):
+                                $_rowClass = ($_rowClass == 'even' ? 'odd' : 'even');
+                                ?>
+                            <tr class="<?php echo $_rowClass; ?>">
+                                <td class="a-left last"><?php echo $this->escapeHtml($_command); ?></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <?php endif; ?>
+
+        <?php endif; ?>
+    <?php else: ?>
+        <p><?php echo $this->__('No environments defined.'); ?></p>
+    <?php endif; ?>
+</div>

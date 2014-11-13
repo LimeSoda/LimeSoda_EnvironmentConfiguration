@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout>
+    <adminhtml_limesoda_environmentconfiguration_index>
+        <reference name="content">
+            <block type="limesoda_environmentconfiguration/adminhtml_overview" name="limesoda_environmentconfiguration.overview"
+                   template="limesoda_environmentconfiguration/overview.phtml"/>
+        </reference>
+    </adminhtml_limesoda_environmentconfiguration_index>
+</layout>

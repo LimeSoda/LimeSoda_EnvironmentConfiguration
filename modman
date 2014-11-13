@@ -1,3 +1,5 @@
 app/code/community/LimeSoda/EnvironmentConfiguration/ app/code/community/LimeSoda/EnvironmentConfiguration/
+app/design/adminhtml/default/default/layout/limesoda_environmentconfiguration/ app/design/adminhtml/default/default/layout/limesoda_environmentconfiguration/
+app/design/adminhtml/default/default/template/limesoda_environmentconfiguration/ app/design/adminhtml/default/default/template/limesoda_environmentconfiguration/
 app/etc/modules/LimeSoda_EnvironmentConfiguration.xml app/etc/modules/LimeSoda_EnvironmentConfiguration.xml
 lib/n98-magerun/modules/LimeSoda_EnvironmentConfiguration lib/n98-magerun/modules/LimeSoda_EnvironmentConfiguration

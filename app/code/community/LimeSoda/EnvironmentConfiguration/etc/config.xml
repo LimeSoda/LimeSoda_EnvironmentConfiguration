@@ -1,16 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<modules>
-		<LimeSoda_EnvironmentConfiguration>
-			<version>0.0.1</version>
-		</LimeSoda_EnvironmentConfiguration>
-	</modules>
-	
-	<global>
-		<helpers>
-			<limesoda_environmentconfiguration>
-				<class>LimeSoda_EnvironmentConfiguration_Helper</class>
-			</limesoda_environmentconfiguration>
-		</helpers>
-	</global>
+    <modules>
+        <LimeSoda_EnvironmentConfiguration>
+            <version>0.0.1</version>
+        </LimeSoda_EnvironmentConfiguration>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <LimeSoda_EnvironmentConfiguration after="Mage_Adminhtml">LimeSoda_EnvironmentConfiguration_Adminhtml</LimeSoda_EnvironmentConfiguration>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <limesoda_environmentconfiguration>
+                    <file>limesoda_environmentconfiguration/limesoda_environmentconfiguration.xml</file>
+                </limesoda_environmentconfiguration>
+            </updates>
+        </layout>
+    </adminhtml>
+
+    <global>
+        <blocks>
+            <limesoda_environmentconfiguration>
+                <class>LimeSoda_EnvironmentConfiguration_Block</class>
+            </limesoda_environmentconfiguration>
+        </blocks>
+        <helpers>
+            <limesoda_environmentconfiguration>
+                <class>LimeSoda_EnvironmentConfiguration_Helper</class>
+            </limesoda_environmentconfiguration>
+        </helpers>
+        <models>
+            <limesoda_environmentconfiguration>
+                <class>LimeSoda_EnvironmentConfiguration_Model</class>
+            </limesoda_environmentconfiguration>
+        </models>
+    </global>
 </config>
