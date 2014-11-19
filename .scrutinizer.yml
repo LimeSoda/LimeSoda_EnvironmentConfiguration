@@ -1,0 +1,27 @@
+inherit: true
+
+checks:
+    php:
+        code_rating: true
+        duplication: true
+
+tools:
+    external_code_coverage: false
+    php_code_coverage:      false
+    php_code_sniffer:
+        config:
+            standard: 'Zend'
+    php_changetracking: false
+    php_sim: true
+    php_cs_fixer: true
+    php_mess_detector: true
+    php_pdepend: true
+
+    # https://scrutinizer-ci.com/docs/tools/php/php-analyzer/config_reference
+    php_analyzer:
+        enabled: true
+        config:
+            suspicious_code:
+                non_existent_class_in_instanceof_check: false
+                non_existent_class_in_catch_clause: false
+    sensiolabs_security_checker: true
