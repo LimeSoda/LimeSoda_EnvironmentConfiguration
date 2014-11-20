@@ -15,8 +15,7 @@ class Configure extends AbstractMagentoCommand
       $this
           ->setName('ls:env:configure')
           ->addArgument('environment', InputArgument::REQUIRED, 'Identifier of the environment')
-          ->setDescription('Update settings and data for environment')
-      ;
+          ->setDescription('Update settings and data for environment');
     }
 
    /**

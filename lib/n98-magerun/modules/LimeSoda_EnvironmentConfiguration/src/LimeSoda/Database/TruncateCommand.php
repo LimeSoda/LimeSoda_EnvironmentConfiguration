@@ -16,8 +16,7 @@ class TruncateCommand extends AbstractDatabaseCommand
         $this
             ->setName('db:truncate')
             ->addOption('force', 'f', InputOption::VALUE_NONE, 'Force')
-            ->setDescription('Truncate database tables')
-        ;
+            ->setDescription('Truncate database tables');
 
         $help = <<<HELP
 The command prompts before truncating the tables in the database. If --force option is specified it
@@ -41,20 +40,22 @@ HELP;
         if ($input->getOption('force')) {
             $shouldDrop = true;
         } else {
-            $shouldDrop = $dialog->askConfirmation($output, '<question>Really truncate tables in ' . $this->dbSettings['dbname'] . ' ?</question> <comment>[n]</comment>: ', false);
+            $question = '<question>Really truncate tables in ' . $this->dbSettings['dbname'] . ' ?</question> ' .
+                        '<comment>[n]</comment>: ';
+            $shouldDrop = $dialog->askConfirmation($output, $question, false);
         }
-		
-		if($shouldDrop) {
-	        $result = $dbHelper->getTables();
-	        $query = 'SET FOREIGN_KEY_CHECKS = 0; ';
-	        $count = 0;
-	        foreach ($result as $tableName) {
-	            $query .= 'TRUNCATE TABLE `'.$tableName.'`; ';
-	            $count++;
-	        }
-	        $query .= 'SET FOREIGN_KEY_CHECKS = 1;';
-	        $dbHelper->getConnection()->query($query);
-	        $output->writeln('<info>Truncated database tables</info> <comment>' . $count . ' tables truncated</comment>');
-		}        
+
+        if ($shouldDrop) {
+            $result = $dbHelper->getTables();
+            $query = 'SET FOREIGN_KEY_CHECKS = 0; ';
+            $count = 0;
+            foreach ($result as $tableName) {
+                $query .= 'TRUNCATE TABLE `'.$tableName.'`; ';
+                $count++;
+            }
+            $query .= 'SET FOREIGN_KEY_CHECKS = 1;';
+            $dbHelper->getConnection()->query($query);
+            $output->writeln('<info>Truncated database tables</info> <comment>' . $count . ' tables truncated</comment>');
+        }
     }
 }

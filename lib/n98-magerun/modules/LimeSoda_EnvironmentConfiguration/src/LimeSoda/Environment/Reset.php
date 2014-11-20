@@ -19,8 +19,7 @@ class Reset extends AbstractMagentoCommand
           ->setName('ls:env:'.$this->_operation)
           ->addArgument('environment', InputArgument::REQUIRED, 'Identifier of the environment')
           ->addArgument('data', InputArgument::OPTIONAL, 'Data to remove: customers, reports, sales')
-          ->setDescription('Reset (empty) customer, sales, reporting and logging tables in database')
-      ;
+          ->setDescription('Reset (empty) customer, sales, reporting and logging tables in database');
     }
 
    /**
@@ -34,13 +33,13 @@ class Reset extends AbstractMagentoCommand
         if ($this->initMagento()) {
           
           $environment = $input->getArgument('environment');
-          $to_reset = $input->getArgument('data');
+          $toReset = $input->getArgument('data');
 
-          if(isset($to_reset)) {
-              if(array_search($to_reset, $this->_data)===false) {
-                throw new \Exception("No data to reset '" . $to_reset ."' provided.");
+          if (isset($toReset)) {
+              if (array_search($toReset, $this->_data)===false) {
+                throw new \Exception("No data to reset '" . $toReset ."' provided.");
               }
-            $this->_data = array($to_reset);
+            $this->_data = array($toReset);
           }
 
           $helper = \Mage::helper('limesoda_environmentconfiguration');
@@ -48,8 +47,8 @@ class Reset extends AbstractMagentoCommand
           // Deactivating auto-exiting after command execution
           $this->getApplication()->setAutoExit(false);
 
-          foreach($this->_data as $data) {
-              foreach ($helper->getOperations($environment,$this->_operation,$data) as $operation) {
+          foreach ($this->_data as $data) {
+              foreach ($helper->getOperations($environment, $this->_operation, $data) as $operation) {
                   $input = new StringInput($operation);
                   $this->getApplication()->run($input, $output);
               }

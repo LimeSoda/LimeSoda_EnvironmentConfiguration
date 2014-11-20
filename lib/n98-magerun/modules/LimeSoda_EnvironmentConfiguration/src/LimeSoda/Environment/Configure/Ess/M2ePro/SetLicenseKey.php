@@ -35,24 +35,23 @@ EOT
     {
         $this->detectMagento($output);
         if ($this->initMagento()) {
-           if (\Mage::helper('core')->isModuleEnabled(self::EXTENSION_NAME) === false) {
-               throw new \Exception("Extension '" . self::EXTENSION_NAME ."' is not installed.");
-           } 
-            
-           $key = strip_tags($input->getArgument('key'));
-           
-           \Mage::helper('M2ePro/Primary')->getConfig()->setGroupValue(
-                '/'.\Mage::helper('M2ePro/Module')->getName().'/license/','key',(string)$key
-            );
-            //--------------------
+            if (\Mage::helper('core')->isModuleEnabled(self::EXTENSION_NAME) === false) {
+                throw new \Exception("Extension '" . self::EXTENSION_NAME ."' is not installed.");
+            }
 
-            \Mage::getModel('M2ePro/Servicing_Dispatcher')->processTasks(array(
-                \Mage::getModel('M2ePro/Servicing_Task_License')->getPublicNick()
-            ));
-            
+            $key = strip_tags($input->getArgument('key'));
+
+            \Mage::helper('M2ePro/Primary')->getConfig()->setGroupValue(
+                '/'.\Mage::helper('M2ePro/Module')->getName().'/license/', 'key',(string)$key
+            );
+
+            \Mage::getModel('M2ePro/Servicing_Dispatcher')->processTasks(
+                array(\Mage::getModel('M2ePro/Servicing_Task_License')->getPublicNick())
+            );
+
             \Mage::helper('M2ePro/data_cache')->removeValue('M2ePro/Config_Primary_data');
-           
-           $output->writeln("Set license key '" . $key . "'."); 
+
+            $output->writeln("Set license key '" . $key . "'.");
         }
     }
-} 
+}
