@@ -14,7 +14,7 @@ sort($_environments);
 </div>
 
 <div id="maincontainer">
-    <?php if (count($_environments > 0)): ?>
+    <?php if (count($_environments) > 0): ?>
         <ul>
             <?php foreach($_environments as $_environment): ?>
             <li><a href="<?php echo $this->getUrl('*/*/*', array('env' => $_environment)); ?>"><?php echo $this->escapeHtml($_environment); ?></a></li>
