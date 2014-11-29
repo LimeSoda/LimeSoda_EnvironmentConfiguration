@@ -99,6 +99,10 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
         $result = array();
         $environments = Mage::getConfig()->getNode(self::XML_PATH_ENVIRONMENTS);
 
+        if ($environments === false) {
+            return $result;
+        }
+
         foreach ($environments->children() as $name => $config) {
             $result[] = $name;
         }
