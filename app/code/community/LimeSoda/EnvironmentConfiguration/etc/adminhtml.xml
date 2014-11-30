@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <system>
+            <children>
+                <limesoda_environmentconfiguration translate="title">
+                    <title>Environment Configuration</title>
+                    <sort_order>30</sort_order>
+                    <action>adminhtml/limeSoda_environmentConfiguration/index</action>
+                </limesoda_environmentconfiguration>
+            </children>
+        </system>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <limesoda_environmentconfiguration translate="title" module="limesoda_environmentconfiguration">
+                                <title>Environment Configuration</title>
+                                <sort_order>30</sort_order>
+                            </limesoda_environmentconfiguration>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

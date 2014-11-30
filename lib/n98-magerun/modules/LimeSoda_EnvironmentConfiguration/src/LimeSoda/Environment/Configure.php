@@ -15,8 +15,7 @@ class Configure extends AbstractMagentoCommand
       $this
           ->setName('ls:env:configure')
           ->addArgument('environment', InputArgument::REQUIRED, 'Identifier of the environment')
-          ->setDescription('Update settings and data for environment')
-      ;
+          ->setDescription('Update settings and data for environment');
     }
 
    /**
@@ -29,24 +28,19 @@ class Configure extends AbstractMagentoCommand
         $this->detectMagento($output, true);
         if ($this->initMagento()) {
           
-          $environment = $input->getArgument('environment');
-          $helper = \Mage::helper('limesoda_environmentconfiguration');
-          
-          // Deactivating auto-exiting after command execution
-          $this->getApplication()->setAutoExit(false);
-          
-          $variables = $helper->getVariables($environment);
-          $search = array_keys($variables);
-          $replace = array_values($variables);
-          
-          foreach ($helper->getCommands($environment) as $command) {
-              $value = str_replace($search, $replace, strval($command));
-              $input = new StringInput($value);
-              $this->getApplication()->run($input, $output);
-          }
-          
-          // Reactivating auto-exiting after command execution
-          $this->getApplication()->setAutoExit(true);
+            $environment = $input->getArgument('environment');
+            $helper = \Mage::helper('limesoda_environmentconfiguration');
+
+            // Deactivating auto-exiting after command execution
+            $this->getApplication()->setAutoExit(false);
+
+            foreach ($helper->getParsedCommands($environment) as $command) {
+                $input = new StringInput($command);
+                $this->getApplication()->run($input, $output);
+            }
+
+            // Reactivating auto-exiting after command execution
+            $this->getApplication()->setAutoExit(true);
         }
     }
 

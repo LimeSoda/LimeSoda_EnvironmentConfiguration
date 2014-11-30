@@ -1,0 +1,19 @@
+.environment-list-container {
+    margin: 0 0 1em;
+}
+
+.environment-list {
+    list-style-type: circle;
+}
+
+.environment-list-node {
+    margin-left: 1em;
+}
+
+.environment-list-selected {
+    font-weight: bold;
+}
+
+.variable-missing {
+    background-color: #f08080;
+}

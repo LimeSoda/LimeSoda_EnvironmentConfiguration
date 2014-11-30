@@ -1,22 +1,29 @@
 LimeSoda Environment Configuration
 =====================
-Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun. 
+Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using
+n98-magerun.
+
+Build Status
+---
+**Latest Release**
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=master)
+ 
+**Development Branch**
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=dev)
 
 Facts
 -----
-- version: 0.0.1
+- version: 1.0.0
 - extension key: LimeSoda_EnvironmentConfiguration
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
-
-Description
------------
-Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun.
 
 Requirements
 ------------
 - PHP >= 5.3.0
 - Mage_Core
-- n98-magerun
+- [n98-magerun](https://github.com/netz98/n98-magerun)
 
 Compatibility
 -------------
@@ -24,18 +31,21 @@ Compatibility
 
 Installation Instructions
 -------------------------
-1. Install the extension via modman.
+1. Install the extension via [modman](https://github.com/colinmollenhour/modman) or
+   [Composer](https://getcomposer.org/).
+2. Add names to your environments.
+3. Configure environments.
 
 Usage
 -----
-
-Call n98-magerun like this:
+After configuring your environments (see below) call n98-magerun like this:
 
     n98-magerun.phar ls:env:configure [environment]
 
 ### Set an environment name
 
-Configure the environment of the environment in your XML. Most of the time you will want to put this in local.xml as this file doesn't get shared between copies of the shop in most setups.
+Configure the environment of the environment in your XML. Most of the time you will want to put this in local.xml as
+this file doesn't get shared between copies of the shop in most setups.
 
     <config>
         <global>
@@ -72,7 +82,8 @@ will execute the actions you specified for this environment.
 
 ### Adding commands
 
-Next we create a command. You create a `commands` node beneath your environment node. To add a command, you choose a unique node name and add the n98-magerun command as the value:
+Next we create a command. You create a `commands` node beneath your environment node. To add a command, you choose a
+unique node name and add the n98-magerun command as the value:
 
     <?xml version="1.0"?>
     <config>
@@ -91,7 +102,8 @@ Next we create a command. You create a `commands` node beneath your environment 
 
 ### Using variables
 
-You can replace hard-coded strings (e.g. URLs) with variables. Add variables for your environment as children of a `variables` node. Then you can insert the values into commands using the notation `${variable_name}`.
+You can replace hard-coded strings (e.g. URLs) with variables. Add variables for your environment as children of a
+`variables` node. Then you can insert the values into commands using the notation `${variable_name}`.
 
     <?xml version="1.0"?>
     <config>
@@ -111,9 +123,143 @@ You can replace hard-coded strings (e.g. URLs) with variables. Add variables for
         </global>
     </config>
 
+### Add values to 'System > Configuration'
+
+In the first two examples we set a value for `System > Configuration` using the normal `config:set` syntax. If you have
+to do this for many values and different scopes this can get confusing.
+
+Alternatively you can use a special `system_config` node for setting values. It supports scopes the same way you know
+it from the `default`, `websites` and `stores` nodes in `config.xml`.
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <limesoda>
+	            <environments>
+	                <default>
+	                    <variables>
+	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
+	                    </variables>
+	                    <system_configuration>
+	                        <default>
+                                <web>
+                                    <unsecure>
+                                        <base_url>${unsecure_base_url}</base_url>
+                                    </unsecure>
+                                </web>
+                            </default>
+	                    </system_configuration>
+	                </default>
+	            </environments>
+            </limesoda>
+        </global>
+    </config>
+ 
+Define values on website and store view scopes the same way. You can use the website and store code instead of the
+ numeric ids. If you for whatever reason prefer the ID you also can use this one instead.
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <limesoda>
+	            <environments>
+	                <default>
+	                    <variables>
+	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
+	                    </variables>
+	                    <system_configuration>
+	                        <default>
+                                <web>
+                                    <unsecure>
+                                        <base_url>${unsecure_base_url}</base_url>
+                                    </unsecure>
+                                </web>
+                            </default>
+                            <websites>
+                                <first_website>
+                                    <web>
+                                        <unsecure>
+                                            <base_url>${unsecure_base_url}</base_url>
+                                        </unsecure>
+                                    </web>
+                                </first_website>
+                                <second_website>
+                                    <web>
+                                        <unsecure>
+                                            <base_url>http://seconddomain.tld/</base_url>
+                                        </unsecure>
+                                    </web>
+                                <second_website>
+                            </websites>
+                            <stores>
+                                <third_store>
+                                    <web>
+                                        <unsecure>
+                                            <base_url>http://thirddomain.tld/</base_url>
+                                        </unsecure>
+                                    </web>
+                                </third_store>
+                                <4>
+                                    <web>
+                                        <unsecure>
+                                            <base_url>http://fourthdomain.tld/</base_url>
+                                        </unsecure>
+                                    </web>
+                                <4>
+                            </stores>
+	                    </system_configuration>
+	                </default>
+	            </environments>
+            </limesoda>
+        </global>
+    </config>
+
+### Command stages
+
+In the first two examples all commands were placed in the `commands` node. As we just mentioned you can use
+`system_configuration` to put all system configuration settings in its own node and make big configurations clearer.
+ 
+You still may have many commands left which have to be specified in `commands` and have a hard time sorting them in the
+right way by being creative with the names of the XML nodes.
+
+To help a little bit with that you can use two custom stages, `pre_configure` and `post_configure`, which are executed
+before and after the operations in `commands` are processed.
+
+    <?xml version="1.0"?>
+    <config>
+        <global>
+            <limesoda>
+	            <environments>
+	                <default>
+	                    <variables>
+	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
+	                    </variables>
+	                    <commands>
+	                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+	                    </commands>
+	                    <post_configure>
+                            <cd>cache:disable</cd>
+                            <cf>cache:flush</cf>
+	                    </post_configure>
+	                </default>
+	            </environments>
+            </limesoda>
+        </global>
+    </config>
+
+The settings from `system_configuration` are applied in the `commands` stage. This means the commands will be added in
+the following order:
+
+* pre_configure
+* commands
+* system_configuration
+* post_configure
+
 ### Nesting environments
 
-Using variables is nice but the most you will profit if you nest environments. This means you can create a base definition for commands and variables and expand them in other environments. You do this by specifying the parent in your environments base node: `<dev parent="default">`.
+Using variables is nice but the most you will profit if you nest environments. This means you can create a base
+definition for commands and variables and expand them in other environments. You do this by specifying the parent in
+your environments base node: `<dev parent="default">`.
 
 A typical setup could be:
 
@@ -150,7 +296,8 @@ If you want to re-build this setup for the environment configuration, your XML w
     
 If you define a command or variable in a parent environment, the child environment will inherit them.
 
-By specifiying commands and variables on different levels, you can save yourself some typing and maintenance work. In the next example we disable and flush the cache for all environments while setting a different URL for every environment.
+By specifying commands and variables on different levels, you can save yourself some typing and maintenance work. In the
+next example we disable and flush the cache for all environments while setting a different URL for every environment.
 
     <?xml version="1.0"?>
     <config>
@@ -250,18 +397,26 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 		</global>
 	</config>
 
+Backend Overview
+----------------
+Navigate to `System > Environment Configuration` to get a list of all configured environments.
+
+Click on an environment to get a list of the commands that will be executed. Variables not defined for the environment
+are highlighted.
 
 Uninstallation
 --------------
-1. Just like any other modman installed extension.
+Just like any other modman or Composer installed extension. No database tables or other additional files are created.
 
 Support
 -------
-If you have any issues with this extension, open an issue on [GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration/issues).
+If you have any issues with this extension, open an issue on
+[GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration/issues).
 
 Contribution
 ------------
-Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+Any contribution is highly appreciated. The best way to contribute code is to open a
+[pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
 Developer
 ---------
@@ -275,4 +430,4 @@ License
 
 Copyright
 ---------
-(c) 2013 LimeSoda Interactive Marketing GmbH
+(c) 2014 LimeSoda Interactive Marketing GmbH
