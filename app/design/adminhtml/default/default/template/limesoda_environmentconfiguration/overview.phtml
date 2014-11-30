@@ -46,7 +46,7 @@ sort($_environments);
                                 $_rowClass = ($_rowClass == 'even' ? 'odd' : 'even');
                                 ?>
                             <tr class="<?php echo $_rowClass; ?>">
-                                <td class="a-left last"><?php echo $this->escapeHtml($_command); ?></td>
+                                <td class="a-left last"><?php echo $this->renderCommand($_command); ?></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

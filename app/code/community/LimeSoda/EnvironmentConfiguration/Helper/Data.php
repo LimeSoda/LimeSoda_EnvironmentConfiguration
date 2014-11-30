@@ -3,6 +3,16 @@
 class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abstract
 {
     /**
+     * @var string Indicating the end of a variable
+     */
+    const VAR_CLOSING_TAG = '}';
+
+    /**
+     * @var string Indicating the begin of a variable
+     */
+    const VAR_OPENING_TAG = '${';
+
+    /**
      * @var string
      */
     const XML_PATH_ENVIRONMENTS = 'global/limesoda/environments';
@@ -13,6 +23,13 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      * @var array
      */
     protected $_commandStages = array('pre_configure', 'commands', 'post_configure');
+
+    /**
+     * Regular expression for finding a variable in a string.
+     *
+     * @var string
+     */
+    protected $_variableRegex = null;
 
     /**
      * Cache for getVariables() calls.
@@ -133,7 +150,7 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
             if ($variables !== false) {
                 // get commands
                 foreach ($variables->children() as $variable) {
-                    $result['${' . $variable->getName() . '}'] = strval($variable);
+                    $result[self::VAR_OPENING_TAG . $variable->getName() . self::VAR_CLOSING_TAG] = strval($variable);
                 }
             }
 
@@ -175,7 +192,7 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      */
     public function getValue($environment, $variable)
     {
-        $key = '${' . $variable . '}';
+        $key = self::VAR_OPENING_TAG . $variable . self::VAR_CLOSING_TAG;
         $variables = $this->getVariables($environment);
 
         if (array_key_exists($key, $variables)) {
@@ -215,4 +232,21 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
         return $result;
     }
 
+    /**
+     * Returns the regular expression pattern to search for a variable.
+     *
+     * @return string
+     */
+    public function getVariableRegex()
+    {
+        if ($this->_variableRegex === null) {
+            $varOpeningEscaped = preg_quote(self::VAR_OPENING_TAG);
+            $varClosing = self::VAR_CLOSING_TAG;
+            $varClosingEscaped = preg_quote($varClosing);
+
+            $this->_variableRegex = '/(' . $varOpeningEscaped . '[^' . $varClosing . ']+' . $varClosingEscaped . ')/i';
+        }
+
+        return $this->_variableRegex;
+    }
 }
