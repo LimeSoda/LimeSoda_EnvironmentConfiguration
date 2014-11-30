@@ -63,6 +63,35 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
     }
 
     /**
+     * @copyright Tatu Ulmanen (http://stackoverflow.com/a/2915920)
+     * @param array $tree
+     * @param string|null $root
+     * @return array|null
+     */
+    protected function _parseTree($tree, $root = null)
+    {
+        $return = array();
+
+        foreach($tree as $name => $config) {
+
+            $parent = null;
+            if (is_array($config) && array_key_exists('@', $config) && array_key_exists('parent', $config['@'])) {
+                $parent = $config['@']['parent'];
+            }
+
+            if($parent == $root) {
+                unset($tree[$name]);
+                # Append the child into result array and parse its children
+                $return[] = array(
+                    'name' => $name,
+                    'children' => $this->_parseTree($tree, $name)
+                );
+            }
+        }
+        return empty($return) ? null : $return;
+    }
+
+    /**
      * Returns the commands from Magento configuration XML.
      *
      * @param string $environment
@@ -104,6 +133,23 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
         }
 
         return $config;
+    }
+
+    /**
+     * Returns the specified environments in a hierarchy.
+     *
+     * @return array
+     */
+    public function getEnvironmentTree()
+    {
+        $result = array();
+        $environments = Mage::getConfig()->getNode(self::XML_PATH_ENVIRONMENTS);
+
+        if ($environments === false) {
+            return $result;
+        }
+
+        return $this->_parseTree($environments->asArray());
     }
 
     /**
