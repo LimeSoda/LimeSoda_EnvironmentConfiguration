@@ -5,7 +5,6 @@ n98-magerun.
 
 Build Status
 ---
-
 **Latest Release**
 
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=master)
@@ -16,7 +15,7 @@ Build Status
 
 Facts
 -----
-- version: 0.0.1
+- version: 1.0.0
 - extension key: LimeSoda_EnvironmentConfiguration
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
@@ -34,10 +33,11 @@ Installation Instructions
 -------------------------
 1. Install the extension via [modman](https://github.com/colinmollenhour/modman) or
    [Composer](https://getcomposer.org/).
+2. Add names to your environments.
+3. Configure environments.
 
 Usage
 -----
-
 After configuring your environments (see below) call n98-magerun like this:
 
     n98-magerun.phar ls:env:configure [environment]
@@ -399,7 +399,6 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 
 Backend Overview
 ----------------
-
 Navigate to `System > Environment Configuration` to get a list of all configured environments.
 
 Click on an environment to get a list of the commands that will be executed. Variables not defined for the environment
@@ -407,7 +406,7 @@ are highlighted.
 
 Uninstallation
 --------------
-1. Just like any other modman or Composer installed extension. No database tables or other additional files are created.
+Just like any other modman or Composer installed extension. No database tables or other additional files are created.
 
 Support
 -------
