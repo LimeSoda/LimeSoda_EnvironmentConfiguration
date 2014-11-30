@@ -1,6 +1,18 @@
 LimeSoda Environment Configuration
 =====================
-Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun. 
+Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using
+n98-magerun.
+
+Build Status
+---
+
+**Latest Release**
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=master)
+ 
+**Development Branch**
+
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=dev)
 
 Facts
 -----
@@ -8,15 +20,11 @@ Facts
 - extension key: LimeSoda_EnvironmentConfiguration
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
-Description
------------
-Enables developers to modify Magento installations (configuration, data, ...) based on the given environment using n98-magerun.
-
 Requirements
 ------------
 - PHP >= 5.3.0
 - Mage_Core
-- n98-magerun
+- [n98-magerun](https://github.com/netz98/n98-magerun)
 
 Compatibility
 -------------
@@ -24,18 +32,20 @@ Compatibility
 
 Installation Instructions
 -------------------------
-1. Install the extension via modman.
+1. Install the extension via [modman](https://github.com/colinmollenhour/modman) or
+   [Composer](https://getcomposer.org/).
 
 Usage
 -----
 
-Call n98-magerun like this:
+After configuring your environments (see below) call n98-magerun like this:
 
     n98-magerun.phar ls:env:configure [environment]
 
 ### Set an environment name
 
-Configure the environment of the environment in your XML. Most of the time you will want to put this in local.xml as this file doesn't get shared between copies of the shop in most setups.
+Configure the environment of the environment in your XML. Most of the time you will want to put this in local.xml as
+this file doesn't get shared between copies of the shop in most setups.
 
     <config>
         <global>
@@ -72,7 +82,8 @@ will execute the actions you specified for this environment.
 
 ### Adding commands
 
-Next we create a command. You create a `commands` node beneath your environment node. To add a command, you choose a unique node name and add the n98-magerun command as the value:
+Next we create a command. You create a `commands` node beneath your environment node. To add a command, you choose a
+unique node name and add the n98-magerun command as the value:
 
     <?xml version="1.0"?>
     <config>
@@ -91,7 +102,8 @@ Next we create a command. You create a `commands` node beneath your environment 
 
 ### Using variables
 
-You can replace hard-coded strings (e.g. URLs) with variables. Add variables for your environment as children of a `variables` node. Then you can insert the values into commands using the notation `${variable_name}`.
+You can replace hard-coded strings (e.g. URLs) with variables. Add variables for your environment as children of a
+`variables` node. Then you can insert the values into commands using the notation `${variable_name}`.
 
     <?xml version="1.0"?>
     <config>
@@ -245,7 +257,9 @@ the following order:
 
 ### Nesting environments
 
-Using variables is nice but the most you will profit if you nest environments. This means you can create a base definition for commands and variables and expand them in other environments. You do this by specifying the parent in your environments base node: `<dev parent="default">`.
+Using variables is nice but the most you will profit if you nest environments. This means you can create a base
+definition for commands and variables and expand them in other environments. You do this by specifying the parent in
+your environments base node: `<dev parent="default">`.
 
 A typical setup could be:
 
@@ -282,7 +296,8 @@ If you want to re-build this setup for the environment configuration, your XML w
     
 If you define a command or variable in a parent environment, the child environment will inherit them.
 
-By specifying commands and variables on different levels, you can save yourself some typing and maintenance work. In the next example we disable and flush the cache for all environments while setting a different URL for every environment.
+By specifying commands and variables on different levels, you can save yourself some typing and maintenance work. In the
+next example we disable and flush the cache for all environments while setting a different URL for every environment.
 
     <?xml version="1.0"?>
     <config>
@@ -385,21 +400,24 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 Backend Overview
 ----------------
 
-Navigate to `System > Environment Configuration` to see which environments are listed in the configuration.
+Navigate to `System > Environment Configuration` to get a list of all configured environments.
 
-Click on an environment to get a list of the commands that will be executed.
+Click on an environment to get a list of the commands that will be executed. Variables not defined for the environment
+are highlighted.
 
 Uninstallation
 --------------
-1. Just like any other modman installed extension.
+1. Just like any other modman or Composer installed extension. No database tables or other additional files are created.
 
 Support
 -------
-If you have any issues with this extension, open an issue on [GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration/issues).
+If you have any issues with this extension, open an issue on
+[GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration/issues).
 
 Contribution
 ------------
-Any contribution is highly appreciated. The best way to contribute code is to open a [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+Any contribution is highly appreciated. The best way to contribute code is to open a
+[pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
 Developer
 ---------
