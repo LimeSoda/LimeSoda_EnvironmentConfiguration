@@ -2,6 +2,17 @@
 
 class LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration
 {
+
+    /**
+     * Sets a cookie containing the current configured environment name
+     *
+     */
+    public function initCookie() 
+    {
+        $environment = Mage::helper('limesoda_environmentconfiguration/current')->getEnvironmentName();
+        Mage::getModel('core/cookie')->set('limesoda_environment', $environment, 60*60*24*30, '/', null, null, false);
+    }
+
     private function _getDefaultConfiguration(Mage_Core_Model_Config_Element $configuration, array $result)
     {
         $default = $configuration->descend('default');
