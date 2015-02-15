@@ -26,16 +26,6 @@
                 </limesoda_environmentconfiguration>
             </updates>
         </layout>
-        <events>
-            <adminhtml_controller_action_predispatch_start>
-                <observers>
-                    <limesoda_environmentconfiguration_cookie>
-                        <class>LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration</class>
-                        <method>initCookie</method>
-                    </limesoda_environmentconfiguration_cookie>
-                </observers>
-            </adminhtml_controller_action_predispatch_start>
-        </events>
     </adminhtml>
 
     <global>
@@ -44,6 +34,16 @@
                 <class>LimeSoda_EnvironmentConfiguration_Block</class>
             </limesoda_environmentconfiguration>
         </blocks>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <limesoda_environmentconfiguration>
+                        <class>limesoda_environmentconfiguration/observer</class>
+                        <method>adminhtmlControllerActionPredispatchStart</method>
+                    </limesoda_environmentconfiguration>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
         <helpers>
             <limesoda_environmentconfiguration>
                 <class>LimeSoda_EnvironmentConfiguration_Helper</class>

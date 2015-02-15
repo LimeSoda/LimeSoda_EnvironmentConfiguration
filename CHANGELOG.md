@@ -1,7 +1,14 @@
 Changelog
 =========
 
-1.0.0 (unreleased)
+1.1.0 (unreleased)
+-----
+
+Added / Improved:
+
+* Added optional header indicating the current environment (thanks to @tegansnyder)
+
+1.0.0 (30.11.2014)
 -----
 
 Added / Improved:

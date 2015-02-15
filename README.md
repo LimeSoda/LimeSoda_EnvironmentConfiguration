@@ -404,6 +404,23 @@ Navigate to `System > Environment Configuration` to get a list of all configured
 Click on an environment to get a list of the commands that will be executed. Variables not defined for the environment
 are highlighted.
 
+Displaying the environment name in the header
+---------------------------------------------
+You can enable an header bar in `System > Configuration > Advanced > Admin > Environment Configuration > Display
+environment name above admin header`.
+
+To make it easier for you to differentiate between environments you can configure the font and background color per
+environment:
+
+    <environments>
+        <mz>
+            <settings>
+                <color>#fff</color>
+                <background_color>#090</background_color>
+            </settings>
+        </mz>
+    </environments>
+
 Uninstallation
 --------------
 Just like any other modman or Composer installed extension. No database tables or other additional files are created.
