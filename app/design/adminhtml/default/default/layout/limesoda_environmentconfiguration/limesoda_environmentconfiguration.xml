@@ -2,7 +2,7 @@
 <layout>
     <default>
         <reference name="head">
-            <action method="addJs" ifconfig="admin/limesoda_environmentconfiguration_options/display_environment_notice_bar"><name>limesoda_environmentconfiguration/environment.js</name></action>
+            <action method="addJs" ifconfig="admin/limesoda_environmentconfiguration_options/display_environment_notice_bar"><name>limesoda_environmentconfiguration/notice.js</name></action>
             <action method="addCss" ifconfig="admin/limesoda_environmentconfiguration_options/display_environment_notice_bar"><name>limesoda_environmentconfiguration/environment_notice.css</name></action>
         </reference>
     </default>
