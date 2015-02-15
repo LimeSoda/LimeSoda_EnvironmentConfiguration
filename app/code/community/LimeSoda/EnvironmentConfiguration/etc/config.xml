@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LimeSoda_EnvironmentConfiguration>
-            <version>0.0.1</version>
+            <version>1.0.0</version>
         </LimeSoda_EnvironmentConfiguration>
     </modules>
 
@@ -26,6 +26,16 @@
                 </limesoda_environmentconfiguration>
             </updates>
         </layout>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <limesoda_environmentconfiguration_cookie>
+                        <class>LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration</class>
+                        <method>initCookie</method>
+                    </limesoda_environmentconfiguration_cookie>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
     </adminhtml>
 
     <global>
