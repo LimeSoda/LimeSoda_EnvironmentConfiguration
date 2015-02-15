@@ -433,7 +433,8 @@ If you have any issues with this extension, open an issue on
 Contribution
 ------------
 Any contribution is highly appreciated. The best way to contribute code is to open a
-[pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+[pull request on GitHub](https://help.github.com/articles/using-pull-requests). Please create your pull request against
+the `dev` branch.
 
 Developer
 ---------
@@ -447,4 +448,4 @@ License
 
 Copyright
 ---------
-(c) 2014 LimeSoda Interactive Marketing GmbH
+(c) 2014-2015 LimeSoda Interactive Marketing GmbH
