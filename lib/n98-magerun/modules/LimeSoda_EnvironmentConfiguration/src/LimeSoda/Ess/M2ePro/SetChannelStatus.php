@@ -1,6 +1,6 @@
 <?php
 
-namespace LimeSoda\Environment\Configure\Ess\M2ePro;
+namespace LimeSoda\Ess\M2ePro;
 
 use N98\Magento\Command\AbstractMagentoCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -14,7 +14,7 @@ class SetChannelStatus extends AbstractMagentoCommand
     protected function configure()
     {
       $this
-          ->setName('ls:env:configure:ess:m2epro:set-channel-status')
+          ->setName('ls:ess:m2epro:set-channel-status')
           ->addArgument('name', InputArgument::REQUIRED, 'Channel name')
           ->addArgument('status', InputArgument::REQUIRED, 'Channel status')
           ->setDescription('Sets the channel sattus')

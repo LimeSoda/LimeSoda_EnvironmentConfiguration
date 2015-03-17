@@ -397,6 +397,44 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 		</global>
 	</config>
 
+Built-in commands
+-----------------
+
+###ls:aoe:scheduler:set-job-status
+
+Enables and disables cron jobs as used by [Aoe_Scheduler](https://github.com/AOEpeople/Aoe_Scheduler) >= 1.0.0.
+
+    <commands>
+      <example>ls:aoe:scheduler:set-job-status "[jobcode]" "[status]"</example>
+    </commands>
+
+All arguments are required.
+
+* jobcode: The Magento cron job code (e.g. `core_email_queue_send_all`)
+* status: `0` for inactive, `1` for active.
+
+Example:
+
+    <commands>
+      <example>ls:aoe:scheduler:set-job-status "core_email_queue_send_all" "0"</example>
+    </commands>
+
+###ls:ess:m2epro:set-channel-status
+
+Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.
+
+    <commands>
+      <example>ls:ess:m2epro:set-channel-status "[name]" "[status]"</example>
+    </commands>
+
+###ls:ess:m2epro:set-license-key
+
+Sets the license key for Ess_M2ePro. The extension has to be installed and enabled.
+
+    <commands>
+      <example>ls:ess:m2epro:set-channel-status "[key]"</example>
+    </commands>
+
 Backend Overview
 ----------------
 Navigate to `System > Environment Configuration` to get a list of all configured environments.
