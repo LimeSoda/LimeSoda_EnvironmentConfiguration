@@ -400,12 +400,12 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 Built-in commands
 -----------------
 
-###ls:aoe:scheduler:set-job-status
+###ls:aoe:scheduler:job:status
 
 Enables and disables cron jobs as used by [Aoe_Scheduler](https://github.com/AOEpeople/Aoe_Scheduler) >= 1.0.0.
 
     <commands>
-      <example>ls:aoe:scheduler:set-job-status "[jobcode]" "[status]"</example>
+      <example>ls:aoe:scheduler:job:status "[jobcode]" "[status]"</example>
     </commands>
 
 All arguments are required.
@@ -416,7 +416,7 @@ All arguments are required.
 Example:
 
     <commands>
-      <example>ls:aoe:scheduler:set-job-status "core_email_queue_send_all" "0"</example>
+      <example>ls:aoe:scheduler:job:status "core_email_queue_send_all" "0"</example>
     </commands>
 
 ###ls:ess:m2epro:set-channel-status

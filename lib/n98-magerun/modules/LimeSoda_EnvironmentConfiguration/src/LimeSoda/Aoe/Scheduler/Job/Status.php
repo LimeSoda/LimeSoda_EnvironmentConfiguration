@@ -1,18 +1,18 @@
 <?php
 
-namespace LimeSoda\Aoe\Scheduler;
+namespace LimeSoda\Aoe\Scheduler\Job;
 
 use N98\Magento\Command\AbstractMagentoCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SetJobStatus extends AbstractMagentoCommand
+class Status extends AbstractMagentoCommand
 {
     protected function configure()
     {
         $this
-            ->setName('ls:aoe:scheduler:set-job-status')
+            ->setName('ls:aoe:scheduler:job:status')
             ->addArgument('code', InputArgument::REQUIRED, 'Job code')
             ->addArgument('status', InputArgument::REQUIRED, 'Job status')
             ->setDescription('Sets the job status')

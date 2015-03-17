@@ -7,7 +7,7 @@ autoloaders:
 
 commands:
   customCommands:
-    - LimeSoda\Aoe\Scheduler\SetJobStatus
+    - LimeSoda\Aoe\Scheduler\Job\Status
     - LimeSoda\Database\ExecuteCommand
     - LimeSoda\Database\TruncateCommand
     - LimeSoda\Environment\Configure
