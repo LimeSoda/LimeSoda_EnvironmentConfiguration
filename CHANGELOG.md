@@ -8,7 +8,7 @@ Added / Improved:
 
 * Added optional header indicating the current environment (thanks to @tegansnyder)
 * Made header colors configurable per environment
-* Added n98-magerun command `ls:aoe:scheduler:set-job-status`
+* Added n98-magerun command `ls:aoe:scheduler:job:status`
 
 Backwards-incompatible changes:
 
