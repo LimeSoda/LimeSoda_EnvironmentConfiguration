@@ -419,6 +419,9 @@ Example:
       <example>ls:aoe:scheduler:job:status "core_email_queue_send_all" "0"</example>
     </commands>
 
+You will get an output like `Job 'example_cron': set status to '0'.` which makes it easier to identify changes to the
+crons.
+
 ###ls:ess:m2epro:channel:status
 
 Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.
