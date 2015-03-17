@@ -43,7 +43,7 @@ EOT
 
             $key = 'crontab/jobs/' . $name . '/is_active';
             \Mage::app()->getConfig()->saveConfig($key, $status);
-            $output->writeln("Set '" . $name . "' job status.");
+            $output->writeln("Job '" . $name . "': set status to '" . $status . "'.");
         }
     }
 } 
