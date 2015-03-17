@@ -1,23 +1,23 @@
 <?php
 
-namespace LimeSoda\Ess\M2ePro;
+namespace LimeSoda\Ess\M2ePro\Channel;
 
 use N98\Magento\Command\AbstractMagentoCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SetChannelStatus extends AbstractMagentoCommand
+class Status extends AbstractMagentoCommand
 {
     const EXTENSION_NAME = 'Ess_M2ePro';
     
     protected function configure()
     {
       $this
-          ->setName('ls:ess:m2epro:set-channel-status')
+          ->setName('ls:ess:m2epro:channel:status')
           ->addArgument('name', InputArgument::REQUIRED, 'Channel name')
           ->addArgument('status', InputArgument::REQUIRED, 'Channel status')
-          ->setDescription('Sets the channel sattus')
+          ->setDescription('Sets the channel status')
           ->setHelp(
               <<<EOT
               Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.

@@ -419,20 +419,20 @@ Example:
       <example>ls:aoe:scheduler:job:status "core_email_queue_send_all" "0"</example>
     </commands>
 
-###ls:ess:m2epro:set-channel-status
+###ls:ess:m2epro:channel:status
 
 Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.
 
     <commands>
-      <example>ls:ess:m2epro:set-channel-status "[name]" "[status]"</example>
+      <example>ls:ess:m2epro:channel:status "[name]" "[status]"</example>
     </commands>
 
-###ls:ess:m2epro:set-license-key
+###ls:ess:m2epro:license:key
 
 Sets the license key for Ess_M2ePro. The extension has to be installed and enabled.
 
     <commands>
-      <example>ls:ess:m2epro:set-channel-status "[key]"</example>
+      <example>ls:ess:m2epro:license:key "[key]"</example>
     </commands>
 
 Backend Overview

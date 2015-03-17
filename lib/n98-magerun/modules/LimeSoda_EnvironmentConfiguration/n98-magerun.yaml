@@ -12,5 +12,5 @@ commands:
     - LimeSoda\Database\TruncateCommand
     - LimeSoda\Environment\Configure
     - LimeSoda\Environment\Reset
-    - LimeSoda\Ess\M2ePro\SetChannelStatus
-    - LimeSoda\Ess\M2ePro\SetLicenseKey
+    - LimeSoda\Ess\M2ePro\Channel\Status
+    - LimeSoda\Ess\M2ePro\License\Key

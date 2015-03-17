@@ -12,8 +12,8 @@ Added / Improved:
 
 Backwards-incompatible changes:
 
-* Renamed `ls:env:configure:ess:m2epro:set-channel-status` to `ls:ess:m2epro:set-channel-status`
-* Renamed `ls:env:configure:ess:m2epro:set-license-key` to `ls:ess:m2epro:set-license-key`
+* Renamed `ls:env:configure:ess:m2epro:channel-status` to `ls:ess:m2epro:channel:status`
+* Renamed `ls:env:configure:ess:m2epro:set-license-key` to `ls:ess:m2epro:license:key`
 
 1.0.0 (30.11.2014)
 -----
