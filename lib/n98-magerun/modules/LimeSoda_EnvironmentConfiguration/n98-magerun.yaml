@@ -1,13 +1,16 @@
 autoloaders:
+  LimeSoda\Aoe: %module%/src
   LimeSoda\Database\ExecuteCommand: %module%/src
   LimeSoda\Database\TruncateCommand: %module%/src
   LimeSoda\Environment: %module%/src
+  LimeSoda\Ess: %module%/src
 
 commands:
   customCommands:
+    - LimeSoda\Aoe\Scheduler\Job\Status
     - LimeSoda\Database\ExecuteCommand
     - LimeSoda\Database\TruncateCommand
     - LimeSoda\Environment\Configure
-    - LimeSoda\Environment\Configure\Ess\M2ePro\SetChannelStatus
-    - LimeSoda\Environment\Configure\Ess\M2ePro\SetLicenseKey
     - LimeSoda\Environment\Reset
+    - LimeSoda\Ess\M2ePro\Channel\Status
+    - LimeSoda\Ess\M2ePro\License\Key

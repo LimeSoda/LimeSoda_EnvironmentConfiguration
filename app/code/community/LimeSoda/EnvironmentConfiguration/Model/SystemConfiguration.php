@@ -2,6 +2,7 @@
 
 class LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration
 {
+
     private function _getDefaultConfiguration(Mage_Core_Model_Config_Element $configuration, array $result)
     {
         $default = $configuration->descend('default');

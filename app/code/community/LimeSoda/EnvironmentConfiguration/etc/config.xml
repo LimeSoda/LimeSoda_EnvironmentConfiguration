@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LimeSoda_EnvironmentConfiguration>
-            <version>1.0.0</version>
+            <version>1.1.0</version>
         </LimeSoda_EnvironmentConfiguration>
     </modules>
 
@@ -34,6 +34,16 @@
                 <class>LimeSoda_EnvironmentConfiguration_Block</class>
             </limesoda_environmentconfiguration>
         </blocks>
+        <events>
+            <adminhtml_controller_action_predispatch_start>
+                <observers>
+                    <limesoda_environmentconfiguration>
+                        <class>limesoda_environmentconfiguration/observer</class>
+                        <method>adminhtmlControllerActionPredispatchStart</method>
+                    </limesoda_environmentconfiguration>
+                </observers>
+            </adminhtml_controller_action_predispatch_start>
+        </events>
         <helpers>
             <limesoda_environmentconfiguration>
                 <class>LimeSoda_EnvironmentConfiguration_Helper</class>

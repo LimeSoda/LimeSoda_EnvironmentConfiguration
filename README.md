@@ -15,7 +15,7 @@ Build Status
 
 Facts
 -----
-- version: 1.0.0
+- version: 1.1.0
 - extension key: LimeSoda_EnvironmentConfiguration
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
@@ -397,12 +397,70 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 		</global>
 	</config>
 
+Built-in commands
+-----------------
+
+###ls:aoe:scheduler:job:status
+
+Enables and disables cron jobs as used by [Aoe_Scheduler](https://github.com/AOEpeople/Aoe_Scheduler) >= 1.0.0.
+
+    <commands>
+      <example>ls:aoe:scheduler:job:status "[jobcode]" "[status]"</example>
+    </commands>
+
+All arguments are required.
+
+* jobcode: The Magento cron job code (e.g. `core_email_queue_send_all`)
+* status: `0` for inactive, `1` for active.
+
+Example:
+
+    <commands>
+      <example>ls:aoe:scheduler:job:status "core_email_queue_send_all" "0"</example>
+    </commands>
+
+You will get an output like `Job 'example_cron': set status to '0'.` which makes it easier to identify changes to the
+crons.
+
+###ls:ess:m2epro:channel:status
+
+Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.
+
+    <commands>
+      <example>ls:ess:m2epro:channel:status "[name]" "[status]"</example>
+    </commands>
+
+###ls:ess:m2epro:license:key
+
+Sets the license key for Ess_M2ePro. The extension has to be installed and enabled.
+
+    <commands>
+      <example>ls:ess:m2epro:license:key "[key]"</example>
+    </commands>
+
 Backend Overview
 ----------------
 Navigate to `System > Environment Configuration` to get a list of all configured environments.
 
 Click on an environment to get a list of the commands that will be executed. Variables not defined for the environment
 are highlighted.
+
+Displaying the environment name in the header
+---------------------------------------------
+You can enable an header bar in `System > Configuration > Advanced > Admin > Environment Configuration > Display
+environment name above admin header`.
+
+To make it easier for you to differentiate between environments you can configure the font and background color per
+environment:
+
+    <environments>
+        <mz>
+            <settings>
+                <color>#fff</color>
+                <background_color>#090</background_color>
+            </settings>
+        </mz>
+    </environments>
 
 Uninstallation
 --------------
@@ -416,7 +474,8 @@ If you have any issues with this extension, open an issue on
 Contribution
 ------------
 Any contribution is highly appreciated. The best way to contribute code is to open a
-[pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+[pull request on GitHub](https://help.github.com/articles/using-pull-requests). Please create your pull request against
+the `dev` branch.
 
 Developer
 ---------
@@ -430,4 +489,4 @@ License
 
 Copyright
 ---------
-(c) 2014 LimeSoda Interactive Marketing GmbH
+(c) 2014-2015 LimeSoda Interactive Marketing GmbH

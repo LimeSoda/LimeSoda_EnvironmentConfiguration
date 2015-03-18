@@ -1,0 +1,8 @@
+.limesoda_admin_environment_notice {
+	background-color: rgb(8, 31, 34);
+	color: #fff;
+	padding: 3px 3px 3px 12px;
+}
+.limesoda_environment_notice_heading {
+	font-weight: bold;
+}

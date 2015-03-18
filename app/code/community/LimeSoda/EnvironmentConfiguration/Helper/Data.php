@@ -24,6 +24,13 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      */
     protected $_commandStages = array('pre_configure', 'commands', 'post_configure');
 
+	/**
+	 * Cache for getSettings() calls.
+	 *
+	 * @var array
+	 */
+	protected $_settingsCache = array();
+
     /**
      * Regular expression for finding a variable in a string.
      *
@@ -173,6 +180,39 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
         return $result;
     }
 
+	/**
+	 * Returns the settings from Magento configuration XML.
+	 *
+	 * @param string $environment
+	 * @return array
+	 */
+	public function getSettings($environment)
+	{
+		if (!array_key_exists($environment, $this->_settingsCache)) {
+			$config = $this->getEnvironmentConfig($environment);
+
+			// get parent settings (if they exist)
+			if ($parent = $config->getAttribute('parent')) {
+				$result = $this->getSettings($parent);
+			} else {
+				$result = array();
+			}
+
+			$settings = $config->descend('settings');
+
+			if ($settings !== false) {
+				// get settings
+				foreach ($settings->children() as $setting) {
+					$result[$setting->getName()] = strval($setting);
+				}
+			}
+
+			$this->_settingsCache[$environment] = $result;
+		}
+
+		return $this->_settingsCache[$environment];
+	}
+
     /**
      * Returns the variables from Magento configuration XML.
      *
@@ -228,6 +268,24 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
 
         return $result;
     }
+
+	/**
+	 * Returns the value of setting in the given environment.
+	 *
+	 * @param string $environment
+	 * @param string $name
+	 * @return string|null
+	 */
+	public function getSetting($environment, $name)
+	{
+		$settings = $this->getSettings($environment);
+
+		if (array_key_exists($name, $settings)) {
+			return $settings[$name];
+		}
+
+		return null;
+	}
 
     /**
      * Returns the value of the variable in the given environment.

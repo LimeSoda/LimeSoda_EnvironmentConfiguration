@@ -1,7 +1,21 @@
 Changelog
 =========
 
-1.0.0 (unreleased)
+1.1.0 (18.03.2015)
+-----
+
+Added / Improved:
+
+* Added optional header indicating the current environment (thanks to @tegansnyder)
+* Made header colors configurable per environment
+* Added n98-magerun command `ls:aoe:scheduler:job:status`
+
+Backwards-incompatible changes:
+
+* Renamed `ls:env:configure:ess:m2epro:channel-status` to `ls:ess:m2epro:channel:status`
+* Renamed `ls:env:configure:ess:m2epro:set-license-key` to `ls:ess:m2epro:license:key`
+
+1.0.0 (30.11.2014)
 -----
 
 Added / Improved:

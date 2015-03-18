@@ -1,20 +1,20 @@
 <?php
 
-namespace LimeSoda\Environment\Configure\Ess\M2ePro;
+namespace LimeSoda\Ess\M2ePro\License;
 
 use N98\Magento\Command\AbstractMagentoCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SetLicenseKey extends AbstractMagentoCommand
+class Key extends AbstractMagentoCommand
 {
     const EXTENSION_NAME = 'Ess_M2ePro';
     
     protected function configure()
     {
       $this
-          ->setName('ls:env:configure:ess:m2epro:set-license-key')
+          ->setName('ls:ess:m2epro:license:key')
           ->addArgument('key', InputArgument::REQUIRED, 'Ess_M2ePro license key')
           ->setDescription('Set the Ess_M2ePro license key')
           ->setHelp(
