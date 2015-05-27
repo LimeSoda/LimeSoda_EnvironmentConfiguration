@@ -356,7 +356,7 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 		<global>
 			<limesoda>
 				<environments>
-					<default parent="default">
+					<default>
 						<variables>
 						</variables>
 						<commands>
