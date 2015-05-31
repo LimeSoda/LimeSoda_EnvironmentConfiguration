@@ -1,6 +1,13 @@
 Changelog
 =========
 
+Unreleased
+-----
+
+Fixed:
+
+* Avoid errors in backend when environment name is not defined (#4).
+
 1.1.0 (18.03.2015)
 -----
 
