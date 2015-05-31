@@ -6,7 +6,7 @@ Unreleased
 
 Fixed:
 
-* Avoid errors in backend when environment name is not defined (#4).
+* Avoid errors in backend when environment name is not defined (thanks to @andreaspenz) (#4).
 * Colors are not set for environment configuration admin header in Chrome.
 
 1.1.0 (18.03.2015)
