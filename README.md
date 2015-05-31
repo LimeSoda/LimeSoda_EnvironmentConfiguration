@@ -131,6 +131,8 @@ to do this for many values and different scopes this can get confusing.
 Alternatively you can use a special `system_config` node for setting values. It supports scopes the same way you know
 it from the `default`, `websites` and `stores` nodes in `config.xml`.
 
+Use `encrypt="true"` to set an encrypted configuration value.
+
     <?xml version="1.0"?>
     <config>
         <global>
