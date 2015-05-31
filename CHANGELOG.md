@@ -4,6 +4,10 @@ Changelog
 Unreleased
 -----
 
+Added / Improved:
+
+* Allow encrypted configuration values in <system_configuration> (thanks to @schmengler) (#6). 
+
 Fixed:
 
 * Avoid errors in backend when environment name is not defined (thanks to @andreaspenz) (#4).
