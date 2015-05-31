@@ -9,12 +9,11 @@ document.observe("dom:loaded", function() {
         var background_color = '';
         var color = '';
         if (background_color = WindowUtilities.getCookie('limesoda_environment_background_color')) {
-            style = 'background-color: ' + background_color + ';';
+            limesoda_environment_notice.style.backgroundColor = background_color;
         }
         if (color = WindowUtilities.getCookie('limesoda_environment_color')) {
-            style = style + 'color: ' + color + ';';
+            limesoda_environment_notice.style.color = color;
         }
-        limesoda_environment_notice.style = style;
 
 		limesoda_environment_notice.innerHTML = '<span class="limesoda_environment_notice_heading">ENV: </span>' + environment_name;
 
