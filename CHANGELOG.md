@@ -1,6 +1,19 @@
 Changelog
 =========
 
+1.2.0 (31.05.2015)
+-----
+
+Added / Improved:
+
+* Allow encrypted configuration values in <system_configuration> (thanks to @schmengler) (#6). 
+
+Fixed:
+
+* Avoid errors in backend when environment name is not defined (thanks to @andreaspenz) (#4).
+* Colors are not set for environment configuration admin header in Chrome.
+* Fixed error in documentation (thanks to @avoelkl) (#7).
+
 1.1.0 (18.03.2015)
 -----
 

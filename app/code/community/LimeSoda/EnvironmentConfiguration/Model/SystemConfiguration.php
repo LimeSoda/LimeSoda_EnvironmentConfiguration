@@ -14,10 +14,11 @@ class LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration
             foreach ($firstLevel->children() as $second => $secondLevel) {
                 foreach($secondLevel->children() as $third => $thirdLevel) {
                     $third = $thirdLevel->getName();
+                    $encrypt = strval($thirdLevel['encrypt']) !== '';
 
                     $key = 'system_configuration_default_' . $first . '_' . $second . '_' . $third;
                     $path = $first . '/' . $second . '/' . $third;
-                    $result[$key] = 'config:set "' . $path . '" "' . strval($thirdLevel) . '"';
+                    $result[$key] = sprintf('config:set %s "%s" "%s"', $encrypt ? '--encrypt' : '', $path, $thirdLevel);
                 }
             }
         }
@@ -58,10 +59,13 @@ class LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration
                 foreach ($firstLevel->children() as $second => $secondLevel) {
                     foreach($secondLevel->children() as $third => $thirdLevel) {
                         $third = $thirdLevel->getName();
+                        $encrypt = strval($thirdLevel['encrypt']) !== '';
 
                         $key = 'system_configuration_stores_' . $storeName . '_' . $first . '_' . $second . '_' . $third;
                         $path = $first . '/' . $second . '/' . $third;
-                        $result[$key] = 'config:set --scope="stores" --scope-id="' . $storeId . '" "' . $path . '" "' . strval($thirdLevel) . '"';
+                        $result[$key] = sprintf(
+                            'config:set %s --scope="stores" --scope-id="%d" "%s" "%s"',
+                            $encrypt ? '--encrypt' : '', $storeId, $path, $thirdLevel);
                     }
                 }
             }
@@ -103,10 +107,13 @@ class LimeSoda_EnvironmentConfiguration_Model_SystemConfiguration
                 foreach ($firstLevel->children() as $second => $secondLevel) {
                     foreach($secondLevel->children() as $third => $thirdLevel) {
                         $third = $thirdLevel->getName();
+                        $encrypt = strval($thirdLevel['encrypt']) !== '';
 
                         $key = 'system_configuration_websites_' . $websiteName . '_' . $first . '_' . $second . '_' . $third;
                         $path = $first . '/' . $second . '/' . $third;
-                        $result[$key] = 'config:set --scope="websites" --scope-id="' . $websiteId . '" "' . $path . '" "' . strval($thirdLevel) . '"';
+                        $result[$key] = sprintf(
+                            'config:set %s --scope="websites" --scope-id="%d" "%s" "%s"',
+                            $encrypt ? '--encrypt' : '', $websiteId, $path, $thirdLevel);
                     }
                 }
             }

@@ -15,7 +15,7 @@ Build Status
 
 Facts
 -----
-- version: 1.1.0
+- version: 1.2.0
 - extension key: LimeSoda_EnvironmentConfiguration
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
@@ -130,6 +130,8 @@ to do this for many values and different scopes this can get confusing.
 
 Alternatively you can use a special `system_config` node for setting values. It supports scopes the same way you know
 it from the `default`, `websites` and `stores` nodes in `config.xml`.
+
+Use `encrypt="true"` to set an encrypted configuration value.
 
     <?xml version="1.0"?>
     <config>
@@ -356,7 +358,7 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 		<global>
 			<limesoda>
 				<environments>
-					<default parent="default">
+					<default>
 						<variables>
 						</variables>
 						<commands>
