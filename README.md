@@ -191,7 +191,7 @@ Define values on website and store view scopes the same way. You can use the web
                                             <base_url>http://seconddomain.tld/</base_url>
                                         </unsecure>
                                     </web>
-                                <second_website>
+                                </second_website>
                             </websites>
                             <stores>
                                 <third_store>
@@ -207,7 +207,7 @@ Define values on website and store view scopes the same way. You can use the web
                                             <base_url>http://fourthdomain.tld/</base_url>
                                         </unsecure>
                                     </web>
-                                <4>
+                                </4>
                             </stores>
 	                    </system_configuration>
 	                </default>
