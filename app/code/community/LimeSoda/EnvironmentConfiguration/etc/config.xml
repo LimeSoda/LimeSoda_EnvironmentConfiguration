@@ -45,14 +45,14 @@
             </limesoda_environmentconfiguration>
         </blocks>
         <events>
-            <adminhtml_controller_action_predispatch_start>
+            <controller_action_predispatch>
                 <observers>
                     <limesoda_environmentconfiguration>
                         <class>limesoda_environmentconfiguration/observer</class>
-                        <method>adminhtmlControllerActionPredispatchStart</method>
+                        <method>controllerActionPredispatch</method>
                     </limesoda_environmentconfiguration>
                 </observers>
-            </adminhtml_controller_action_predispatch_start>
+            </controller_action_predispatch>
         </events>
         <helpers>
             <limesoda_environmentconfiguration>
