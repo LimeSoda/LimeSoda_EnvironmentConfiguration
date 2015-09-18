@@ -25,17 +25,17 @@ document.observe("dom:loaded", function() {
             limesoda_environment_notice.style.color = color;
         }
 
-		limesoda_environment_notice.innerHTML = '<span class="limesoda_environment_notice_heading">ENV: </span>' + environment_name;
+		limesoda_environment_notice.innerHTML = '<span class="limesoda_environment_notice_heading">ENV: </span>' + decodeURIComponent(environment_name.replace(/\+/g,  " "));
 
-		var admin_header = document.getElementsByClassName('header')[0];
-        if (!admin_header) {
-            admin_header = document.getElementsByClassName('wrapper')[0];
+		var header = document.getElementsByClassName('header')[0];
+        if (!header) {
+            header = document.getElementsByClassName('wrapper')[0];
         }
         
-		admin_header.parentNode.insertBefore(limesoda_environment_notice, admin_header);
+		header.parentNode.insertBefore(limesoda_environment_notice, header);
 
 	} catch(err) {
-		console.log(err);
+		// console.log(err);
 	}
 });
 

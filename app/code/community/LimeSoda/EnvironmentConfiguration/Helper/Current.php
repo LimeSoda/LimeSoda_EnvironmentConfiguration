@@ -6,6 +6,7 @@ class LimeSoda_EnvironmentConfiguration_Helper_Current extends Mage_Core_Helper_
      * @var string
      */
     const ENVIRONMENT_NAME_XML_PATH = 'global/limesoda/environment/name';
+    const ENVIRONMENT_LABEL_XML_PATH = 'global/limesoda/environments/%s/label';
 
     const EXCEPTION_ENVIRONMENT_NOT_SET = 'Please specify an environment';
 
@@ -32,7 +33,19 @@ class LimeSoda_EnvironmentConfiguration_Helper_Current extends Mage_Core_Helper_
         }
         return $this->_environment;
     }
+    
+    public function getEnvironmentLabel()
+    {
+        $environmentName = $this->getEnvironmentName();
+        $labelNode = Mage::getConfig()->getNode(sprintf(self::ENVIRONMENT_LABEL_XML_PATH, $environmentName));
 
+        if ($labelNode AND ($label = trim($labelNode->__toString())) != '') {
+            return sprintf('%s [%s]', $label, $environmentName);
+        }
+
+        return $environmentName;
+    }
+    
     /**
      * Returns the setting for the current environment.
      *
