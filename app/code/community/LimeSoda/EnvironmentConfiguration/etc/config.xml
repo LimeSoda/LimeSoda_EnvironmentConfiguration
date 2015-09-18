@@ -28,6 +28,16 @@
         </layout>
     </adminhtml>
 
+    <frontend>
+        <layout>
+            <updates>
+                <limesoda_environmentconfiguration>
+                    <file>limesoda_environmentconfiguration/limesoda_environmentconfiguration.xml</file>
+                </limesoda_environmentconfiguration>
+            </updates>
+        </layout>
+    </frontend>
+
     <global>
         <blocks>
             <limesoda_environmentconfiguration>
