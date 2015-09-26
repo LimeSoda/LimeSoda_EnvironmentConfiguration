@@ -458,11 +458,14 @@ environment:
     <environments>
         <mz>
             <settings>
+            	<label>Dev Environment M.Zeis</label>
                 <color>#fff</color>
                 <background_color>#090</background_color>
             </settings>
         </mz>
     </environments>
+
+You can also display a label, see the `<label>` node above. If no label is set, the environment name is displayed.
 
 Uninstallation
 --------------

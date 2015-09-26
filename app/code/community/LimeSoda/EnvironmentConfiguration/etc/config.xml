@@ -28,6 +28,16 @@
         </layout>
     </adminhtml>
 
+    <frontend>
+        <layout>
+            <updates>
+                <limesoda_environmentconfiguration>
+                    <file>limesoda_environmentconfiguration/limesoda_environmentconfiguration.xml</file>
+                </limesoda_environmentconfiguration>
+            </updates>
+        </layout>
+    </frontend>
+
     <global>
         <blocks>
             <limesoda_environmentconfiguration>
@@ -35,14 +45,14 @@
             </limesoda_environmentconfiguration>
         </blocks>
         <events>
-            <adminhtml_controller_action_predispatch_start>
+            <controller_action_predispatch>
                 <observers>
                     <limesoda_environmentconfiguration>
                         <class>limesoda_environmentconfiguration/observer</class>
-                        <method>adminhtmlControllerActionPredispatchStart</method>
+                        <method>controllerActionPredispatch</method>
                     </limesoda_environmentconfiguration>
                 </observers>
-            </adminhtml_controller_action_predispatch_start>
+            </controller_action_predispatch>
         </events>
         <helpers>
             <limesoda_environmentconfiguration>
