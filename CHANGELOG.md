@@ -1,6 +1,18 @@
 Changelog
 =========
 
+1.3.0 (Unreleased)
+-----
+
+Added / Improved:
+
+* Show environment notice on frontend too, allow custom labels (thanks to @avstudnitz) (#12).
+
+Fixed:
+
+* Corrected closing tags in the README (thanks to @EliasKotlyar) (#9).
+* Added compatibility to Magento patch SUPEE-6285 (validating admin ACL (thanks to @gfobe) (#11).
+
 1.2.0 (31.05.2015)
 -----
 
