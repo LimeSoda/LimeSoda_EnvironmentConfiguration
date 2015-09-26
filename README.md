@@ -15,8 +15,9 @@ Build Status
 
 Facts
 -----
-- version: 1.2.0
+- version: 1.3.0 (Unreleased)
 - extension key: LimeSoda_EnvironmentConfiguration
+- Composer key: `limesoda/limesoda_environment-configuration`
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)
 
 Requirements
@@ -449,6 +450,9 @@ are highlighted.
 
 Displaying the environment name in the header
 ---------------------------------------------
+
+###Backend
+
 You can enable an header bar in `System > Configuration > Advanced > Admin > Environment Configuration > Display
 environment name above admin header`.
 
@@ -466,6 +470,11 @@ environment:
     </environments>
 
 You can also display a label, see the `<label>` node above. If no label is set, the environment name is displayed.
+
+###Frontend
+
+You can display the same header bar in the frontend by enabling it in `System > Configuration > Advanced > Admin >
+Environment Configuration > Display environment name above frontend header`.  
 
 Uninstallation
 --------------
