@@ -217,6 +217,15 @@ Define values on website and store view scopes the same way. You can use the web
         </global>
     </config>
 
+### Overriding values for single CLI calls
+
+Introduced in 1.3.0 you can now override one or multiple variable values when calling `ls-env-configure`:
+
+    n98-magerun.phar ls:env:configure --override='var1=val1' --override='var2=val2' mz
+
+This command will set the value of the variable `var1` to `val1` and `var2` to `val2`, no matter what was defined in
+the configuration XML.
+
 ### Command stages
 
 In the first two examples all commands were placed in the `commands` node. As we just mentioned you can use

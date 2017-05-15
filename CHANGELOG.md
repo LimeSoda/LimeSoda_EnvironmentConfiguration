@@ -7,6 +7,7 @@ Changelog
 Added / Improved:
 
 * Show environment notice on frontend too, allow custom labels (thanks to @avstudnitz) (#12).
+* Added CLI option to override values in the configuration XML. 
 
 Fixed:
 

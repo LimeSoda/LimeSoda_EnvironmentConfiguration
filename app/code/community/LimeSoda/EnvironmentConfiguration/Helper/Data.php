@@ -217,9 +217,10 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      * Returns the variables from Magento configuration XML.
      *
      * @param string $environment
+     * @param array $overrides Associative array containing variable value overrides
      * @return array
      */
-    public function getVariables($environment)
+    public function getVariables($environment, array $overrides = array())
     {
         if (!array_key_exists($environment, $this->_variablesCache)) {
             $config = $this->getEnvironmentConfig($environment);
@@ -240,6 +241,10 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
                 }
             }
 
+            foreach ($overrides as $name => $value) {
+                $result[self::VAR_OPENING_TAG . $name . self::VAR_CLOSING_TAG] = (string)$value;
+            }
+
             $this->_variablesCache[$environment] = $result;
         }
 
@@ -250,13 +255,14 @@ class LimeSoda_EnvironmentConfiguration_Helper_Data extends Mage_Core_Helper_Abs
      * Returns the commands from Magento configuration XML parsed ready for execution.
      *
      * @param string $environment
+     * @param array $overrides Associative array containing variable value overrides
      * @return array
      */
-    public function getParsedCommands($environment)
+    public function getParsedCommands($environment, array $overrides = array())
     {
         $result = array();
 
-        $variables = $this->getVariables($environment);
+        $variables = $this->getVariables($environment, $overrides);
         $search = array_keys($variables);
         $replace = array_values($variables);
 
