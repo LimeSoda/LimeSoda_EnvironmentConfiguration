@@ -412,7 +412,7 @@ You can use this `config.xml` skeleton as a starting point for your environment 
 Built-in commands
 -----------------
 
-###ls:aoe:scheduler:job:status
+### ls:aoe:scheduler:job:status
 
 Enables and disables cron jobs as used by [Aoe_Scheduler](https://github.com/AOEpeople/Aoe_Scheduler) >= 1.0.0.
 
@@ -434,7 +434,7 @@ Example:
 You will get an output like `Job 'example_cron': set status to '0'.` which makes it easier to identify changes to the
 crons.
 
-###ls:ess:m2epro:channel:status
+### ls:ess:m2epro:channel:status
 
 Sets the channel status for Ess_M2ePro. The extension has to be installed and enabled.
 
@@ -460,7 +460,7 @@ are highlighted.
 Displaying the environment name in the header
 ---------------------------------------------
 
-###Backend
+### Backend
 
 You can enable an header bar in `System > Configuration > Advanced > Admin > Environment Configuration > Display
 environment name above admin header`.
@@ -480,7 +480,7 @@ environment:
 
 You can also display a label, see the `<label>` node above. If no label is set, the environment name is displayed.
 
-###Frontend
+### Frontend
 
 You can display the same header bar in the frontend by enabling it in `System > Configuration > Advanced > Admin >
 Environment Configuration > Display environment name above frontend header`.  
