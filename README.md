@@ -93,7 +93,7 @@ unique node name and add the n98-magerun command as the value:
 	            <environments>
 	                <default>
 	                    <commands>
-	                        <cfg_wubu>config:set "web/unsecure/base_url" "http://www.domain.tld/"</cfg_wubu>
+	                        <cfg_wubu>config:set -- "web/unsecure/base_url" "http://www.domain.tld/"</cfg_wubu>
 	                    </commands>
 	                </default>
 	            </environments>
@@ -116,7 +116,7 @@ You can replace hard-coded strings (e.g. URLs) with variables. Add variables for
 	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
 	                    </variables>
 	                    <commands>
-	                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+	                        <cfg_wubu>config:set -- "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
 	                    </commands>
 	                </default>
 	            </environments>
@@ -247,7 +247,7 @@ before and after the operations in `commands` are processed.
 	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
 	                    </variables>
 	                    <commands>
-	                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+	                        <cfg_wubu>config:set -- "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
 	                    </commands>
 	                    <post_configure>
                             <cd>cache:disable</cd>
@@ -321,7 +321,7 @@ next example we disable and flush the cache for all environments while setting a
 	                        <unsecure_base_url><![CDATA[http://www.domain.tld/]]></unsecure_base_url>
 	                    </variables>
 	                    <commands>
-	                        <cfg_wubu>config:set "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
+	                        <cfg_wubu>config:set -- "web/unsecure/base_url" "${unsecure_base_url}"</cfg_wubu>
 	                    </commands>
 	                </default>
 	                <dev parent="default">
