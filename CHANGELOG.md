@@ -13,6 +13,8 @@ Fixed:
 
 * Corrected closing tags in the README (thanks to @EliasKotlyar) (#9).
 * Added compatibility to Magento patch SUPEE-6285 (validating admin ACL (thanks to @gfobe) (#11).
+* It wasn't possible to set config values starting with a `-` when using the `system_configuration` node (thanks to
+  @Qronicle for noticing) (#16).
 
 1.2.0 (31.05.2015)
 -----
