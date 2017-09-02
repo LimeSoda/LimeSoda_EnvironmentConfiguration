@@ -498,7 +498,7 @@ Contribution
 ------------
 Any contribution is highly appreciated. The best way to contribute code is to open a
 [pull request on GitHub](https://help.github.com/articles/using-pull-requests). Please create your pull request against
-the `dev` branch.
+the `develop` branch.
 
 Developer
 ---------
