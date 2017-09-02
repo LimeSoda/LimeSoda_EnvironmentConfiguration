@@ -11,7 +11,7 @@ Build Status
  
 **Development Branch**
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=dev)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/badges/quality-score.png?b=dev)](https://scrutinizer-ci.com/g/LimeSoda/LimeSoda_EnvironmentConfiguration/?branch=develop)
 
 Facts
 -----
