@@ -15,7 +15,7 @@ Build Status
 
 Facts
 -----
-- version: 1.3.0 (Unreleased)
+- version: 1.3.0
 - extension key: LimeSoda_EnvironmentConfiguration
 - Composer key: `limesoda/limesoda_environment-configuration`
 - [extension on GitHub](https://github.com/LimeSoda/LimeSoda_EnvironmentConfiguration)

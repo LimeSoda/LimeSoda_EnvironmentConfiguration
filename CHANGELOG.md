@@ -1,13 +1,16 @@
 Changelog
 =========
 
-1.3.0 (Unreleased)
+1.3.0 (14.02.2018)
 -----
 
 Added / Improved:
 
 * Show environment notice on frontend too, allow custom labels (thanks to @avstudnitz) (#12).
 * Added CLI option to override values in the configuration XML. 
+* Make display of environment name for frontend configurable in system
+* Change develop branch to 'develop'
+* Update scrutinizer badge
 
 Fixed:
 
@@ -15,6 +18,7 @@ Fixed:
 * Added compatibility to Magento patch SUPEE-6285 (validating admin ACL (thanks to @gfobe) (#11).
 * It wasn't possible to set config values starting with a `-` when using the `system_configuration` node (thanks to
   @Qronicle for noticing) (#16).
+* Fix README formating on GitHub
 
 1.2.0 (31.05.2015)
 -----
